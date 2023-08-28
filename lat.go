@@ -2,13 +2,13 @@ package main
 
 import "fmt"
 
-type kontak struct{
-	nama	string
-	nomor	int
+type kontak struct {
+	nama  string
+	nomor int
 }
 
 func ListKontak(data []kontak) {
-	if len(data) > 0{
+	if len(data) > 0 {
 		fmt.Println("================")
 		fmt.Println("Daftar Kontak")
 		fmt.Println("================")
@@ -26,10 +26,12 @@ func TambahKontak(data *[]kontak) {
 	fmt.Println("================")
 	fmt.Println("Tambah Kontak")
 	fmt.Println("================")
-	var nm 	string
+	var nm string
 	var nmr int
-	fmt.Print("Nama :"); fmt.Scanln(&nm)
-	fmt.Print("Nomor :"); fmt.Scanln(&nmr)
+	fmt.Print("Nama :")
+	fmt.Scanln(&nm)
+	fmt.Print("Nomor :")
+	fmt.Scanln(&nmr)
 	*data = append(*data, kontak{nm, nmr})
 }
 
@@ -57,13 +59,14 @@ func HapusKontak(data *[]kontak) {
 	}
 }
 
-func EditKontak(data *[]kontak){
+func EditKontak(data *[]kontak) {
 	fmt.Println("================")
 	fmt.Println("Edit Kontak")
 	fmt.Println("================")
 	var nm string
 	var nmr, op int
-	fmt.Print("Nama yang akan diedit: "); fmt.Scanln(&nm)
+	fmt.Print("Nama yang akan diedit: ")
+	fmt.Scanln(&nm)
 
 	indexToEdit := -1
 	for i, kontak := range *data {
@@ -88,7 +91,7 @@ func EditKontak(data *[]kontak){
 			(*data)[indexToEdit].nomor = nmr
 		}
 		fmt.Printf("Kontak dengan nama '%s' telah diubah\n", nm)
-	}	
+	}
 }
 
 func main() {
@@ -99,12 +102,18 @@ func main() {
 		fmt.Print("Pilih : ")
 		fmt.Scanln(&op)
 		switch op {
-			case 1: ListKontak(data)
-			case 2: TambahKontak(&data)
-			case 3: HapusKontak(&data)
-			case 4: EditKontak(&data)
-			case 5: fmt.Println("Program Berakhir...")
-			default:fmt.Println("Pilihan tidak valid! masukan pilihan kembali...")
+		case 1:
+			ListKontak(data)
+		case 2:
+			TambahKontak(&data)
+		case 3:
+			HapusKontak(&data)
+		case 4:
+			EditKontak(&data)
+		case 5:
+			fmt.Println("Program Berakhir...")
+		default:
+			fmt.Println("Pilihan tidak valid! masukan pilihan kembali...")
 		}
-	}		
+	}
 }
